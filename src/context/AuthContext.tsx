@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import type { User, Session } from '@supabase/supabase-js';
 import { supabase } from '../services/supabase';
+import { setIsDemoMode } from '../services/api';
 import type { Profile } from '../types';
 
 interface AuthContextType {
@@ -47,6 +48,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const signOut = async () => {
+    if (getIsDemoMode()) {
+      setIsDemoMode(false);
+      localStorage.removeItem('finflow_demo_mode');
+      setUser(null);
+      setSession(null);
+      setProfile(null);
+      window.location.reload();
+      return;
+    }
+
     await supabase.auth.signOut();
     setUser(null);
     setSession(null);
