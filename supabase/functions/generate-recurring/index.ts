@@ -49,7 +49,7 @@ Deno.serve(async (req) => {
     // Initialize Supabase client with Service Role Key (bypasses RLS to run administrative tasks)
     const supabaseClient = createClient(
       Deno.env.get("SUPABASE_URL") ?? "",
-      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "",
+      Deno.env.get("SERVICE_ROLE_KEY") ?? "",
       {
         auth: {
           persistSession: false,

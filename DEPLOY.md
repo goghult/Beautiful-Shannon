@@ -42,7 +42,7 @@ supabase login
 npx supabase functions deploy generate-recurring --project-ref your_project_ref
 ```
 
-3. Set the service role key (in Supabase settings) as a secret named `SUPABASE_SERVICE_ROLE_KEY` if you plan to call the function server-to-server.
+3. Set the service role key (in Supabase settings) as a secret named `SERVICE_ROLE_KEY` if you plan to call the function server-to-server.
 
 ## Using the GitHub Actions workflow
 A workflow was added at `.github/workflows/deploy.yml`. It will:

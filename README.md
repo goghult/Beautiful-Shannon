@@ -103,8 +103,10 @@ The recurring transaction engine runs in Deno inside a Supabase Edge Function:
    ```
 3. Configure the Edge Function's access keys in Supabase secrets so it can query templates:
    ```bash
-   supabase secrets set --project-ref your_project_ref SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+   supabase secrets set --project-ref your_project_ref SERVICE_ROLE_KEY=your_service_role_key
    ```
+   
+   Use `SERVICE_ROLE_KEY` instead of a name that starts with `SUPABASE_`, because Supabase CLI reserves that prefix.
 4. Schedule the cron runner inside your Supabase dashboard or via SQL Editor using `pg_cron` (run every day at midnight):
    ```sql
    select cron.schedule(
